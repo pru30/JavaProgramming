@@ -12,19 +12,31 @@ import com.java.Node;
  * Top pointer
 **/
 public class StackUsingLinkList {
-    SingleLinkedList sll = new SingleLinkedList();
+    public SingleLinkedList sll;
+    public StackUsingLinkList(){
+        sll = new SingleLinkedList();
+    }
 
     public Node pop()
     {
         if(sll.head == null)
         {
-            return null;
+            return new Node("Stack is Empty!");
         }
         else
         {
-            Node nodeToBeReturned = sll.head;
-            sll.head = nodeToBeReturned.link;
+            Node nodeToBeReturned = sll.deleteFirst();
             return nodeToBeReturned;
         }
+    }
+
+    public void push(String data)
+    {
+        sll.addFirst(data);
+    }
+
+    public int seek(String data)
+    {
+        return sll.search(data);
     }
 }

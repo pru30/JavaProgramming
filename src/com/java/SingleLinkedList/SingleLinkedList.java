@@ -24,6 +24,12 @@ public class SingleLinkedList{
     public void addLast(String data)
     {
         Node curr = this.head;
+        if(this.head == null)
+        {
+            Node node = new Node(data);
+            this.head = node;
+            return;
+        }
         while (curr.link != null)
         {
             curr = curr.link;
@@ -144,5 +150,17 @@ public class SingleLinkedList{
             curr = curr.link;
         }
 
+    }
+
+    public int search(String data)
+    {
+        Node curr = this.head;
+        int index = 0;
+        while (curr != null && !curr.data.equals(data))
+        {
+            index++;
+            curr = curr.link;
+        }
+        return (curr == null)? -1:index;
     }
 }
